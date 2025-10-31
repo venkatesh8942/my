@@ -1,41 +1,143 @@
+:root {
+  --gold: #d4af37;
+  --cyan: #00d4ff;
+  --navy-dark: #0a0e27;
+  --slate-deep: #1a1f3a;
+  --black-rich: #0f1626;
+  --lime-neon: #00ff41;
+  --pink-neon: #ff00ff;
+  --red-warn: #ff1744;
+}
+
 @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      background-color: #0f172a; /* slate-900 as a fallback */
-    }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0a0e27;
+  color: #ffffff;
+}
 
-    code {
-      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
-    }
+code {
+  font-family: 'Courier New', source-code-pro, Menlo, Monaco, Consolas,
+    monospace;
+}
 
-    /* Custom scrollbar for webkit browsers */
-    .scrollbar-thin::-webkit-scrollbar {
-      height: 6px;
-      width: 6px;
-    }
-    .scrollbar-thin::-webkit-scrollbar-track {
-      background: transparent;
-       border-radius: 10px;
-    }
-    .scrollbar-thin::-webkit-scrollbar-thumb {
-      background: #475569; /* slate-600 */
-      border-radius: 10px;
-    }
-    .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-      background: #64748b; /* slate-500 */
-    }
+/* Custom scrollbar for webkit browsers */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--cyan);
+  border-radius: 10px;
+  opacity: 0.3;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+  opacity: 0.5;
+}
 
-    /* Custom scrollbar for firefox */
-    .scrollbar-thin {
-      scrollbar-width: thin;
-      scrollbar-color: #475569 transparent; /* thumb track */
-    }
+/* Custom scrollbar for firefox */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--cyan) transparent;
+}
+
+/* Keyframe animations */
+@keyframes scan-line {
+  0% {
+    transform: translateX(-100%) translateY(-100%);
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(100%) translateY(100%);
+    opacity: 0.1;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes glitch-shift {
+  0%, 100% {
+    color: #d4af37;
+  }
+  50% {
+    color: #00d4ff;
+  }
+}
+
+@keyframes glow-scan {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Utility classes */
+.arc-reactor {
+  width: 80px;
+  height: 80px;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.1));
+  box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.3), 0 0 15px rgba(212, 175, 55, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  animation: pulse 4s infinite;
+}
+
+.tech-border {
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.hud-text {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.gold-glow {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.cyan-glow {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #d4af37 0%, #ffd700 30%, #00d4ff 70%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
